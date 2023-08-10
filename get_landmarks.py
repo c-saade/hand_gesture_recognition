@@ -1,6 +1,21 @@
 ## hand_landmarks.py ##
 #
-# various functions to get hand and arms landmarks from a video
+# various functions to retrieve hand landmarks and relevant pose and face landmarks from a video or live capture'
+
+# arguments
+import argparse
+parser = argparse.ArgumentParser(
+                    prog='get_landmarks',
+                    description='Retrieves hand landmarks and relevant pose and face landmarks from a video or live capture')
+
+parser.add_argument('-i', '--file_in', default = 0, help = 'File from which to read the video, or device number for live capture')
+parser.add_argument('-o', '--file_out', default = None, help = 'File in which to write the landmarks. If None, landmarks are not saved.')
+
+parser.add_argument('--display', action = 'store_true', help = 'Display the video')
+parser.add_argument('--no-display', dest = 'display', action = 'store_false', help = 'Do not display the video')
+parser.set_defaults(display = True) 
+
+args = parser.parse_args()
 
 # libraries
 import cv2
@@ -107,6 +122,7 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
     if file_out:
         np.save(file_out, all_landmarks)
 
-
+if __name__ == '__main__':
+    get_landmarks(file_in = args.file_in, file_out = args.file_out, display = args.display)
 
 
