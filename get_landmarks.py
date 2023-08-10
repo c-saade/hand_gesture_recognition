@@ -71,26 +71,29 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
         cap = cv2.VideoCapture(file_in)
         while cap.isOpened():
             ret, frame = cap.read()
-        
-            # detect landmarks from image
-            results = process_frame(frame, hands)
-        
-            # annotate and display frame
-            if display:
-                    annotate_frame(frame, results)
-                    cv2.imshow("Annotated hands", cv2.flip(frame, 1))
-         
-            # save append the new landmarks to all_landmarks array
-            if file_out:
-                landmarks = landmarks_to_array(results)
-                try:
-                    all_landmarks = np.vstack([all_landmarks, landmarks])
-                except:
-                    all_landmarks = landmarks
-   
+            if ret == True:
+                # detect landmarks from image
+                results = process_frame(frame, hands)
+            
+                # annotate and display frame
+                if display:
+                        annotate_frame(frame, results)
+                        cv2.imshow("Annotated hands", cv2.flip(frame, 1))
+             
+                # save append the new landmarks to all_landmarks array
+                if file_out:
+                    landmarks = landmarks_to_array(results)
+                    try:
+                        all_landmarks = np.vstack([all_landmarks, landmarks])
+                    except:
+                        all_landmarks = landmarks
+       
 
-            # wait 40 ms or break if 'q' is pressed
-            if cv2.waitKey(40) & 0xFF == ord('q'):
+                # wait 40 ms or break if 'q' is pressed
+                if cv2.waitKey(40) & 0xFF == ord('q'):
+                    break
+                    
+            else:
                 break
             
 
