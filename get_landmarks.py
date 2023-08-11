@@ -123,6 +123,8 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
     if file_out:
         np.save(file_out, all_landmarks)
         
+    return(all_landmarks)
+        
 def pad_landmarks(landmarks, target_frames):
     # pads a landmarks array by adding zeros at the begining to reach target_frames
     pad_row = target_frames - landmarks.shape[0]
