@@ -1,7 +1,7 @@
 import cv2
 import os
 import pandas as pd
-from get_landmarks import get_landmarks
+from get_landmarks import get_landmarks, pad_landmarks
 
 wlasl = pd.read_csv('data/WSASL_100/WLASL_100.csv', index_col = 0)
 
