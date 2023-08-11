@@ -89,12 +89,12 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
             if ret == True:
                 # detect landmarks from image
                 results = process_frame(frame, hands)
-            
+                
                 # annotate and display frame
                 if display:
-                        annotate_frame(frame, results)
-                        cv2.imshow("Annotated hands", cv2.flip(frame, 1))
-             
+                    annotate_frame(frame, results)
+                    cv2.imshow("Annotated hands", cv2.flip(frame, 1))
+                        
                 # save append the new landmarks to all_landmarks array
                 if file_out:
                     landmarks = landmarks_to_array(results)
