@@ -26,5 +26,12 @@ for index, row in wlasl.iterrows():
     file_in = path_in + row['file']
     file_out = path_out + row['gloss'] + "/" + row['file'].strip('.mp4') + '.npy'
     
+    # getting landmarks
+    landmarks = get_landmarks(file_in, file_out = None, display = False)
+    # padding landmarks
+    pad_landmarks(landmarks, 195)
+    # saving landmarks
+    np.save(file_out, landmarks)
+    
     print(n/n_files)
-    get_landmarks(file_in, file_out, display = False)
+    
