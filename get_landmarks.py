@@ -128,7 +128,8 @@ def pad_landmarks(landmarks, target_frames):
     # pads a landmarks array by adding zeros at the begining to reach target_frames
     pad_row = target_frames - landmarks.shape[0]
     pad_col = landmarks.shape[1]
-    landmarks = np.vstack((np.zeros((pad_row, pad_col)), landmarks))
+    padded_landmarks = np.vstack((np.zeros((pad_row, pad_col)), landmarks))
+    return(padded_landmarks)
 
 if __name__ == '__main__':
     get_landmarks(file_in = args.file_in, file_out = args.file_out, display = args.display)

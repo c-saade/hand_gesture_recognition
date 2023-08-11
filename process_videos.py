@@ -30,7 +30,7 @@ for index, row in wlasl.iterrows():
     # getting landmarks
     landmarks = get_landmarks(file_in, file_out = None, display = False)
     # padding landmarks
-    pad_landmarks(landmarks, 195)
+    landmarks = pad_landmarks(landmarks, 195)
     # saving landmarks
     np.save(file_out, landmarks)
     
