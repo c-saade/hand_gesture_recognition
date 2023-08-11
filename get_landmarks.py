@@ -103,10 +103,11 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
                     except:
                         all_landmarks = landmarks
        
-
-                # wait 40 ms or break if 'q' is pressed
-                if cv2.waitKey(40) & 0xFF == ord('q'):
-                    break
+                # if the video is displayed or live capture
+                if display or type(file_in) == int:    
+                    # wait 40 ms or break if 'q' is pressed
+                    if cv2.waitKey(40) & 0xFF == ord('q'):
+                        break
                     
             else:
                 break
