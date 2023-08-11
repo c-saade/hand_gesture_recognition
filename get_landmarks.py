@@ -95,12 +95,13 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
                     annotate_frame(frame, results)
                     cv2.imshow("Annotated hands", cv2.flip(frame, 1))
                         
-                
-                landmarks = landmarks_to_array(results)
-                try:
-                    all_landmarks = np.vstack([all_landmarks, landmarks])
-                except:
-                    all_landmarks = landmarks
+                # save append the new landmarks to all_landmarks array
+                if file_out:
+                    landmarks = landmarks_to_array(results)
+                    try:
+                        all_landmarks = np.vstack([all_landmarks, landmarks])
+                    except:
+                        all_landmarks = landmarks
        
                 # if the video is displayed or live capture
                 if display or type(file_in) == int:    
@@ -121,7 +122,7 @@ def get_landmarks(file_in = 0, file_out = None, display = True):
     # write out the landmarks
     if file_out:
         np.save(file_out, all_landmarks)
-    
+        
     return(all_landmarks)
         
 def pad_landmarks(landmarks, target_frames):
