@@ -14,7 +14,7 @@ def frame_augmentation(frame, mirror = False, angle = 0, shift = [0, 0, 0]):
     return(out_frame)
     
     
-def video_augmentation(file_in, file_out = None, max_angle = 35, max_shift = 0.2, max_time_shift = 0.3):
+def video_augmentation(file_in, file_out = None, max_angle = 35, max_shift_x = 0.2, max_shift_y = 0, max_time_shift = 0.3):
     # applies random transformations to a video for data augmentation
     # file_in: input file
     # file_out: optional file name for writing transformed video
@@ -36,8 +36,8 @@ def video_augmentation(file_in, file_out = None, max_angle = 35, max_shift = 0.2
     # rotation up to 35 degrees
     angle = np.random.uniform(-max_angle, max_angle)
     # shift
-    shift_x = int(np.random.uniform(-max_shift, max_shift)*width)
-    shift_y = int(np.random.uniform(-max_shift, max_shift)*height)
+    shift_x = int(np.random.uniform(-max_shift_x, max_shift_x)*width)
+    shift_y = int(np.random.uniform(-max_shift_y, max_shift_y)*height)
     
     # time shift:
     time_shift = int(np.random.uniform(-max_time_shift, max_time_shift) * n_frames)
