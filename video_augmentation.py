@@ -55,7 +55,6 @@ def video_augmentation(file_in, file_out = None, max_angle = 35, max_shift = 0.2
     cap.release()
     
     # shifting the frame list in time
-    print(time_shift)
     if time_shift > 0:
         frame_list = frame_list[time_shift:]
     if time_shift < 0:
