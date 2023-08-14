@@ -64,7 +64,7 @@ def video_augmentation(file_in, file_out = None, max_angle = 35, max_shift = 0.2
     
     # write out
     if file_out:
-        skvideo.io.vwrite(file_out, frame_list)
+        skvideo.io.vwrite(file_out, augmented_frame_list)
     
     return(frame_list)
     
