@@ -62,10 +62,8 @@ def video_augmentation(file_in, file_out = None, max_angle = 35, max_shift_x = 0
     # augmenting the video
     augmented_frame_list = [frame_augmentation(frame, mirror, angle, [shift_y, shift_x, 0]) for frame in frame_list]
     
-    # write out
-    if file_out:
+    try:
         skvideo.io.vwrite(file_out, augmented_frame_list)
-    
-    return(frame_list)
-    
+    except:
+        print('file_out error')
     
